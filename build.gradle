@@ -1,0 +1,35 @@
+plugins {
+    id 'java'
+    id 'idea'
+    id 'java-gradle-plugin'
+    id 'com.gradle.plugin-publish' version '0.10.0'
+}
+
+group = 'com.gradle.plugin.project'
+archivesBaseName = 'greeting-plugin'
+version = '0.1'
+
+repositories {
+    jcenter()
+}
+
+pluginBundle {
+    website = 'https://www.gradle.org/'
+    vcsUrl = 'https://github.com/gradle-guides/greeting-plugin-example'
+    tags = ['example', 'template', 'greeting']
+}
+
+gradlePlugin {
+    plugins {
+        greetingsPlugin {
+            id = 'com.zl.plugin.greeting'
+            implementationClass = 'com.gradle.plugin.project.GreetingPlugin'
+            displayName = 'Greeting Plugin'
+            description = 'the first gradle plugin test'
+        }
+    }
+}
+
+dependencies {
+    testImplementation 'junit:junit:4.12'
+}
